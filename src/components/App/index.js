@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import Header from '../Header';
+import Main from '../Main';
 import './App.scss';
-// import fetchData from '../../utils/fetchData';
-
+import fetchData from '../../utils/fetchData';
 
 const App = () => {
-  // const [username, setUsername] = useState('');
+  const [user, setUser] = useState(null);
   const [searchText, setSearchText] = useState('');
+  const [searchList, setSearchList] = useState([]);
 
   const handleSearch = (event) => {
     setSearchText(event.target.value);
@@ -16,21 +16,27 @@ const App = () => {
   useEffect(() => {
     if (searchText.length < 3) return;
 
-    axios.get('https://torre.bio/api/bios/jetonthaci', {
-      mode: 'no-cors',
-      headers: {
-        'Content-type': 'application/json',
-      },
-    })
+    fetchData(`https://torre.bio/api/people?q=${searchText}&limit=10`)
       .then((res) => res.data)
-      .then((data) => {
-        console.log(data);
-      });
+      .then((data) => setSearchList(data));
   }, [searchText]);
+
+  const selectUser = (selectedUser) => {
+    setSearchText('');
+    setSearchList([]);
+    setUser(selectedUser);
+  };
 
   return (
     <div className="page">
-      <Header searchText={searchText} searchHandler={handleSearch} />
+      <Header
+        searchText={searchText}
+        searchHandler={handleSearch}
+        searchList={searchList}
+        userSelect={selectUser}
+      />
+
+      <Main user={user} />
     </div>
   );
 };

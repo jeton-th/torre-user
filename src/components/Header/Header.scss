@@ -1,0 +1,49 @@
+.main-header {
+  position: fixed;
+  top: 0; width: 100%;
+  height: 80px;
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+}
+
+.search {
+  position: fixed;
+  max-width: 460px;
+  width: 100%;
+  padding: 10px;
+  border: 0;
+  box-shadow: 0 3px 10px rgba($color: #000000, $alpha: 0.2);
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.search-list {
+  position: fixed;
+  top: 55px;
+  width: 100%;
+  max-width: 460px;
+  box-sizing: border-box;
+  background: #ffffff;
+  box-shadow: 0 3px 10px rgba($color: #000000, $alpha: 0.2);
+
+  button {
+    width: 100%;
+    padding: 10px 5px;
+    text-align: left;
+    background: #ffffff;
+    border: 0;
+
+    &:focus {
+      background: rgba($color: #000000, $alpha: 0.1);
+      outline: none;
+    }
+  }
+
+}
