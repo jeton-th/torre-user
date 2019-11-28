@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Header from '../Header';
-import fetchData from '../../utils/fetchData';
 import './App.scss';
+// import fetchData from '../../utils/fetchData';
+
 
 const App = () => {
   // const [username, setUsername] = useState('');
@@ -14,12 +16,13 @@ const App = () => {
   useEffect(() => {
     if (searchText.length < 3) return;
 
-    fetchData('get', 'bios', searchText)
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((err) => {
-        console.log(err);
+    axios.get('https://torre.bio/api/bios/jetonthaci', {
+      headers: {
+        'Content-type': 'application/json',
+      },
+    })
+      .then((res) => {
+        console.log(res);
       });
   }, [searchText]);
 

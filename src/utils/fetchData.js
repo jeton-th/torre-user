@@ -1,13 +1,11 @@
 import axios from 'axios';
 
-const fetchData = async (method, path, data) => {
-  const result = await axios[method]('https://torre.bio/api/bios/jetonthaci',
+const fetchData = async (url) => {
+  const result = await axios.get(url,
     {
-      mode: 'no-cors',
       headers: {
         'Content-Type': 'application/json',
       },
-      credentials: 'same-origin',
     });
 
   return result;
