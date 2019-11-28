@@ -22,8 +22,9 @@ const App = () => {
         'Content-type': 'application/json',
       },
     })
-      .then((res) => {
-        console.log(res.data);
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
       });
   }, [searchText]);
 
