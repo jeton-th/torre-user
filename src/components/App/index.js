@@ -22,7 +22,7 @@ const App = () => {
         'Content-type': 'application/json',
       },
     })
-      .then((res) => res.json())
+      .then((res) => res.data)
       .then((data) => {
         console.log(data);
       });
