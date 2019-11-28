@@ -16,7 +16,7 @@ const App = () => {
   useEffect(() => {
     if (searchText.length < 3) return;
 
-    axios.get('https://torre-user.herokuapp.com/https://torre.bio/api/bios/jetonthaci', {
+    axios.get('https://torre.bio/api/bios/jetonthaci', {
       mode: 'no-cors',
       headers: {
         'Content-type': 'application/json',
