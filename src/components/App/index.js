@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import Header from '../Header';
+import Main from '../Main';
 import './App.scss';
 import fetchData from '../../utils/fetchData';
 
@@ -16,16 +16,15 @@ const App = () => {
   useEffect(() => {
     if (searchText.length < 3) return;
 
-    fetchData(`https://torre.bio/api/people?q=${searchText}`)
+    fetchData(`https://torre.bio/api/people?q=${searchText}&limit=10`)
       .then((res) => res.data)
       .then((data) => setSearchList(data));
   }, [searchText]);
 
-  const selectUser = (user) => {
+  const selectUser = (selectedUser) => {
     setSearchText('');
     setSearchList([]);
-    setUser(user);
-    console.log(user);
+    setUser(selectedUser);
   };
 
   return (
@@ -36,6 +35,8 @@ const App = () => {
         searchList={searchList}
         userSelect={selectUser}
       />
+
+      <Main user={user} />
     </div>
   );
 };

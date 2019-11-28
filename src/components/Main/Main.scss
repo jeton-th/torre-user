@@ -1,0 +1,35 @@
+.content { 
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 140px;
+  box-sizing: border-box;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  
+  img {
+    width: 30%;
+    height: auto;
+  }
+}
+
+.info {
+  width: 65%;
+  text-align: center;
+
+  h1 {
+    font-size: 3em;
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+}

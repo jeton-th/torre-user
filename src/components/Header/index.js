@@ -1,19 +1,35 @@
 import React from 'react';
 import PropType from 'prop-types';
+import './Header.scss';
 
 const Header = ({
   searchText, searchHandler, searchList, userSelect,
 }) => (
   <header className="main-header">
-    <input
-      type="search"
-      onChange={searchHandler}
-      value={searchText}
-      placeholder="Search a user ..."
-    />
+    <div className="container">
+      <input
+        type="search"
+        className="search"
+        onChange={searchHandler}
+        value={searchText}
+        placeholder="Search a Torre user ..."
+      />
 
-    <div className="search-list">
-      {searchList.map((user) => <a key={user.name} onClick={() => userSelect(user)}>{user.name}</a>)}
+      <div className="search-list">
+        {
+        searchList.map(
+          (user) => (
+            <button
+              type="button"
+              key={user.publicId}
+              onClick={() => userSelect(user)}
+            >
+              {user.name}
+            </button>
+          ),
+        )
+        }
+      </div>
     </div>
   </header>
 );
